@@ -1,0 +1,5 @@
+Flickr8k_Dataset/
+data/features.pkl
+*.h5
+__pycache__/
+image_captioning_env/

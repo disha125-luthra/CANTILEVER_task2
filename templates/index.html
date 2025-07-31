@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Caption Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #83a4d4, #b6fbff);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 25px;
+            font-size: 1rem;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .caption-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-left: 4px solid #007BFF;
+            background-color: #f0f8ff;
+            font-style: italic;
+            color: #333;
+        }
+
+        .uploaded-image {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🖼️ AI Image Caption Generator</h1>
+
+    <div class="card">
+        <form method="POST" enctype="multipart/form-data">
+            <!-- ✅ Match Flask app.py: use 'image' as the input name -->
+            <input type="file" name="image" required><br>
+            <input type="submit" value="Generate Caption">
+        </form>
+
+        {% if caption %}
+            <div class="caption-box">
+                <strong>Caption:</strong><br>{{ caption }}
+            </div>
+        {% endif %}
+
+        {% if image_url %}
+            <img class="uploaded-image" src="{{ image_url }}" alt="Uploaded Image">
+        {% endif %}
+    </div>
+
+</body>
+</html>
